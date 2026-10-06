@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+* {
+  font-family: var(--font-open-sans), sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgba(248, 250, 249, 1);
+  color: #0d0e10;
+}
+
+.body-no-scroll {
+  overflow: hidden; /* блокує вертикальний і горизонтальний скрол */
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border: 4px solid #ddd;
+  border-top-color: #000; /* можеш поміняти на свій колір */
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.Spinner-container {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1330px;
+  padding: 0 15px;
+}
+
+.fs-xxl {
+  font-size: 36px;
+}
+.fs-xl {
+  font-size: 24px;
+}
+.fs-lg {
+  font-size: 20px;
+}
+.fs-md {
+  font-size: 18px;
+}
+.fs-sm {
+  font-size: 16px;
+}
+.fs-xs {
+  font-size: 14px;
+}
+
+.in-catalog-button {
+  color: #002652;
+  background: #fbf90d;
+  width: 100%;
+  text-align: center;
+  border-radius: 6px;
+  padding: 17px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+.know-more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 17px 0;
+  border: 1px solid #f8faf9;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+.know-more-icon {
+  font-size: 24px;
+  transform: rotate(270deg);
+}
+
+.in-catalog-button:hover {
+  opacity: 0.9;
+}
+.know-more:hover {
+  background-color: rgb(50, 49, 49);
+  border: 1px solid rgb(72, 71, 71);
+}
+
+.bgBetweenBlack {
+  background-color: #0d0e10;
+  height: 100px;
+}
+
+.to-Catalog-blue {
+  margin-top: 35px;
+  display: block;
+  text-align: center;
+  color: #f8faf9;
+  width: 100%;
+  padding: 18px 0;
+  background: #0339f4;
+  border-radius: 6px;
+  transition: all ease 0.3s;
+}
+
+.to-Catalog-blue:hover {
+  background: #1033a4;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.Catalog-top-right-wrap-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Filter-mobile-button {
+  display: none;
+}
+.Filter-mobile-button svg {
+  width: 24px;
+  height: 24px;
+  color: #0339f4;
+}
+
+.Catalog-top-right-wrap {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+.Catalog-top-right-wrap-sort-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.Catalog-top-right-wrap-sort-wrapper-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0339f4;
+  cursor: pointer;
+}
+.Catalog-top-right-wrap-sort-wrapper-menu {
+  width: max-content;
+  right: 0;
+  position: absolute;
+  top: calc(100% + 10px);
+  box-shadow: 0 4px 4px -1px rgba(12, 12, 13, 0.05),
+    0 4px 4px -1px rgba(12, 12, 13, 0.1);
+  background: #f8faf9;
+  padding: 10px 24px;
+  z-index: 5;
+}
+
+.Catalog-top-right-wrap-sort-wrapper-menu-button {
+  max-width: 240px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #4f50521a;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #0d0e10;
+  color: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.Catalog-top-right-wrap-sort-wrapper-menu-button.actual {
+  font-weight: 700;
+}
+
+.success-page {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #edf3ff, #f9fbff);
+}
+
+.success-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 32px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+
+  box-shadow: 0 12px 30px rgba(0, 85, 255, 0.12);
+  border: 1px solid #e1e9ff;
+}
+
+.success-icon {
+  font-size: 78px;
+  color: #2f6aff;
+  margin: 0 auto 20px;
+}
+
+.success-card h1 {
+  color: #0b2c6d;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.success-text {
+  color: #4a67a5;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.success-ref {
+  color: #2f6aff;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.success-buttons {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.success-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-decoration: none;
+  background: #f4f7ff;
+  color: #2f6aff;
+  padding: 11px 14px;
+  border-radius: 9px;
+  font-weight: 500;
+  transition: 0.25s ease;
+  border: 1px solid #dbe3ff;
+}
+
+.success-btn:hover {
+  background: #e8efff;
+}
+
+.success-btn.main {
+  background: linear-gradient(135deg, #2f6aff, #5a86ff);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.success-btn.main:hover {
+  filter: brightness(1.05);
+}
+
+/* ==== FAILED / CANCELLED MODE ==== */
+
+.success-page.failed {
+  background: linear-gradient(135deg, #fff1f1, #fff6f6);
+}
+
+.success-card.failed {
+  border-color: #ffd5d5;
+  box-shadow: 0 12px 30px rgba(255, 0, 0, 0.12);
+}
+
+.success-icon.failed {
+  color: #ff4d4d;
+}
+
+/* Кнопка "спробувати ще раз" */
+.success-btn.danger {
+  background: linear-gradient(135deg, #ff4d4d, #ff6e6e);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.success-btn.danger:hover {
+  filter: brightness(1.05);
+}
+
+/* Вторичный текст */
+.success-subtext {
+  color: #8a3a3a;
+  font-size: 13px;
+  margin-top: -10px;
+}
+
+/* АНИМАЦИЯ ИКОНКИ */
+.success-icon.failed {
+  animation: shake 0.45s ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .fs-xxl {
+    font-size: 32px;
+  }
+  .fs-xl {
+    font-size: 22px;
+  }
+  .fs-lg {
+    font-size: 18px;
+  }
+  .fs-md {
+    font-size: 16px;
+  }
+  .fs-sm {
+    font-size: 14px;
+  }
+  .in-catalog-button {
+    padding: 14px 0;
+  }
+  .know-more {
+    padding: 14px 0;
+  }
+  .to-Catalog-blue {
+    font-size: 14px;
+    padding: 14px 0;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .fs-xxl {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .bgBetweenBlack {
+    height: 40px;
+  }
+  .success-buttons {
+    flex-direction: column;
+  }
+}

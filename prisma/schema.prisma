@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  login    String @unique
+  password String
+}
+
+model User {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  surname      String
+  middleName   String?
+  email        String    @unique
+  dateBirthday DateTime?
+  phoneNumber  String?
+  password     String
+  createdAt    DateTime  @default(now())
+
+  resetToken       String?
+  resetTokenExpiry DateTime?
+
+  favoriteProducts String[]
+}
+
+model Product {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  producer        String
+  mainDescription String
+  description     String?
+  category        String
+  type            String?
+  features        String?
+  purpose         String?
+  components      String?
+  additional      String?
+  isBestseller    Boolean @default(false)
+  isActive        Boolean @default(true)
+  slug            String? @unique
+
+  variants Variant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Variant {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  flavor     String? // може бути null якщо таблетки без смаку
+  amount     Float? // кількість (напр. 500 або 60)
+  unitType   String // одиниця виміру: "g", "pcs", "caps", "ml"
+  sizeAmount String?
+  price      Float
+  inStock    Boolean  @default(true)
+  discount   Float?   @default(0)
+  isMain     Boolean? @default(false)
+
+  images String[] // фото для кожного варіанту
+
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String  @db.ObjectId
+}
+
+model OrderItem {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  orderId String @db.ObjectId
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  name      String
+  producer  String
+  category  String
+  slug      String?
+
+  flavor     String?
+  amount     Float
+  unitType   String
+  sizeAmount String?
+  price      Float
+  discount   Float?
+  images     String[]
+
+  quantity   Int
+  finalPrice Int
+
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  // --- CONTACT ---
+  name        String
+  surname     String
+  middleName  String?
+  phoneNumber String
+  email       String?
+
+  // --- DELIVERY ---
+  delivery     String
+  villageCity  String?
+  street       String?
+  department   String?
+
+  // --- PAYMENT ---
+  typeOfPay OrderPayType
+  status    OrderStatus @default(PENDING)
+
+  // --- TOTALS ---
+  totalPrice    Int
+  deliveryPrice Int
+  discount      Int @default(0)
+
+  // --- WAYFORPAY ---
+  orderRef String? @unique
+
+  // --- ITEMS ---
+  items OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum OrderPayType {
+  online
+  when_received
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  CONFIRMED
+  FAILED
+  NEW
+  CANCELED
+  SENDTORECEIVER
+  DELIVERED
+  VET_SPORT
+}

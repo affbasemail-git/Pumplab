@@ -1,0 +1,49 @@
+.catalog-container {
+  margin: 0 auto;
+  max-width: 1330px;
+  padding: 0 15px;
+  display: flex;
+  width: 100%;
+  gap: 15px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .selected-filter-mobile {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .catalog-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 20px;
+  }
+  .catalog-cards-container-top {
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .selected-filter-mobile .SelectedFilters {
+    margin-top: 8px;
+  }
+}
+
+@media only screen and (max-width: 725px) {
+  .SelectedFilters-card {
+    padding: 10px;
+  }
+  .SelectedFilters-card p {
+    font-size: 14px;
+  }
+  .catalog-cards {
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .catalog-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10;
+  }
+}
